@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="container body-content">
+
+    <h1 th:text="${title}">Default Title</h1>
+
+
+<!--    <p th:unless="${cheeses} and ${cheeses.size()}">no cheese :(</p>-->
+
+<!--    <div>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+            </tr>
+
+            <tr th:each="cheese : ${cheeses}">
+                <td th:text="${cheese.name}"></td>
+                <td th:text="${cheese.description}"></td>
+                <td th:text="${cheese.category.getName()}"></td>
+            </tr>
+        </table>
+    </div>-->
+    <div style="margin-bottom: 1rem;">
+
+        <button type="button" class="btn btn-success"><a href="/cheese/add" style="color: white;">Add</a></button>
+        <button type="button" class="btn btn-danger"><a href="/cheese/remove" style="color: white;">Remove</a></button>
+    </div>
+</div>
+</body>
+</html>
