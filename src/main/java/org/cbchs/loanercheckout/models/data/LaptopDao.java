@@ -10,6 +10,5 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface LaptopDao extends CrudRepository<Laptop, Integer> {
-    
 
 }
