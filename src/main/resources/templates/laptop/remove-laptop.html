@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="container body-content">
+
+    <h1 th:text="${title}">Default Title</h1>
+
+    <form method="post">
+        <div th:each="laptop : ${laptops}" class="checkbox">
+            <input type = "checkbox" name = "ids" th:value="${laptop.id}" th:id="${laptop.id}" />
+            <label th:for="${laptop.id}" th:text="${laptop.computerName}"></label>
+            <br />
+        </div>
+
+        <button type="submit" class="btn btn-danger" value="Remove laptop">Remove laptop</button>
+    </form>
+</div>
+</body>
+</html>

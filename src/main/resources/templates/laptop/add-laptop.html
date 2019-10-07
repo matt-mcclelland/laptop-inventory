@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="container body-content">
+    <h1 th:text="${title}">Default Title</h1>
+
+    <form method="post" style="max-width:600px;" th:object="${laptop}">
+        <div class="form-group">
+            <label th:for="computerName">Computer Name</label>
+            <input class="form-control" th:field="*{computerName}" />
+            <span th:errors="*{computerName}" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label th:for="serialNumber">Serial Number</label>
+            <input class="form-control" th:field="*{serialNumber}" />
+            <span th:errors="*{serialNumber}" class="error"></span>
+        </div>
+
+<!--        <div class="form-group">-->
+<!--            <label th:for="type">Type</label>-->
+<!--            <select name="categoryId">-->
+<!--                <option th:each="category : ${categories}"-->
+<!--                        th:text="${category.name}"-->
+<!--                        th:value="${category.id}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
+
+        <button type="submit" class="btn btn-success" value="Add Laptop">Add Laptop</button>
+    </form>
+</div>
+</body>
+</html>

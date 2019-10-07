@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Laptop {
@@ -14,10 +14,12 @@ public class Laptop {
     private int id;
 
     @NotNull
-    private String serialNumber;
+    @Size(min=3, max=15, message = "Computer name must be between 3 and 16 characters")
+    private String computerName;
 
     @NotNull
-    private String computerName;
+    @Size(min=8, max=9, message = "Please enter the 8 character serial number.")
+    private String serialNumber;
 
     public String getSerialNumber() {
         return serialNumber;
@@ -35,20 +37,9 @@ public class Laptop {
         this.computerName = computerName;
     }
 
-    public Date getCheckedOut() {
-        return checkedOut;
-    }
-
-    public void setCheckedOut(Date checkedOut) {
-        this.checkedOut = checkedOut;
-    }
-
-
     public int getId() {
         return id;
     }
-
-    private Date checkedOut;
 
     public Laptop() { }
 
@@ -56,5 +47,9 @@ public class Laptop {
         this.computerName = computerName;
         this.serialNumber = serialNumber;
     }
+
+
+
+
 
 }
