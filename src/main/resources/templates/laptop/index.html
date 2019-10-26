@@ -18,11 +18,13 @@
                 <tr>
                     <th>Computer Name</th>
                     <th>Serial Number</th>
+                    <th>Checked Out</th>
                 </tr>
 
                 <tr th:each="laptop : ${laptops}">
                     <td th:text="${laptop.computerName}"></td>
                     <td th:text="${laptop.serialNumber}"></td>
+                    <td th:text="${laptop.checkedOut}"></td>
                 </tr>
              </table>
     </div>

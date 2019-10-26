@@ -21,6 +21,17 @@ public class Laptop {
     @Size(min=8, max=9, message = "Please enter the 8 character serial number.")
     private String serialNumber;
 
+    @NotNull
+    private boolean checkedOut;
+
+    public boolean isCheckedOut() {
+        return checkedOut;
+    }
+
+    public void setCheckedOut(boolean checkedOut) {
+        this.checkedOut = checkedOut;
+    }
+
     public String getSerialNumber() {
         return serialNumber;
     }
@@ -47,9 +58,5 @@ public class Laptop {
         this.computerName = computerName;
         this.serialNumber = serialNumber;
     }
-
-
-
-
 
 }
