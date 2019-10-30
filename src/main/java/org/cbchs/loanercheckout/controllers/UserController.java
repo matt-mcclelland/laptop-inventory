@@ -14,6 +14,8 @@ public class UserController {
 //    @Autowired
 //    private UserDao userDao;
 
+
+    // TODO check validation
     @RequestMapping(value = "add-user", method = RequestMethod.GET)
     public String displayAddUserForm(Model model) {
         model.addAttribute("title", "Add User");
