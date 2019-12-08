@@ -18,8 +18,8 @@ public class User {
     private int id;
 
     @NotNull
-    @Size(min=6, max=6, message = "Please enter a 6 digit student number!")
-    private int studentIDNumber;
+    //@Size(min=6, max=6, message = "Please enter a 6 digit student number!")
+    private Integer studentIDNumber;
 
     @NotNull
     private String lastName;
@@ -28,11 +28,11 @@ public class User {
     @Size(min=3, max=24, message = "Please enter a name with between 3 and 24 characters!")
     private String firstName;
 
-    public int getStudentIDNumber() {
+    public Integer getStudentIDNumber() {
         return studentIDNumber;
     }
 
-    public void setStudentIDNumber(int studentIDNumber) {
+    public void setStudentIDNumber(Integer studentIDNumber) {
         this.studentIDNumber = studentIDNumber;
     }
 
