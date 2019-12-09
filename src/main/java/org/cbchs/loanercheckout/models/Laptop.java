@@ -18,7 +18,7 @@ public class Laptop {
     private String computerName;
 
     @NotNull
-    @Size(min=8, max=9, message = "Please enter the 8 character serial number.")
+    @Size(min = 8, message = "Serial number must be at least 8 characters long")
     private String serialNumber;
 
     @NotNull
@@ -37,7 +37,7 @@ public class Laptop {
     }
 
     public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
+        this.serialNumber = serialNumber.toUpperCase();
     }
 
     public String getComputerName() {

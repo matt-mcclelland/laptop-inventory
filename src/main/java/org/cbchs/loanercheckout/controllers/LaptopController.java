@@ -36,6 +36,16 @@ public class LaptopController {
             return "laptop/add-laptop";
         }
 
+        var indexLength = newLaptop.getSerialNumber().length();
+
+        if (indexLength > 8) {
+            var newSerial = newLaptop.getSerialNumber();
+            var startIndexRange = newSerial.length() - 8;
+            var fixedSerialNumber = newSerial.substring(startIndexRange, indexLength);
+
+            newLaptop.setSerialNumber(fixedSerialNumber);
+        }
+
         laptopDao.save(newLaptop);
         return "redirect:";
     }

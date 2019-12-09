@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -36,6 +37,26 @@ private UserDao userDao;
         }
 
         userDao.save(newUser);
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "remove-user", method = RequestMethod.GET)
+    public String displayRemoveuserForm(Model model) {
+        model.addAttribute("title", "Remove User");
+        model.addAttribute("users", userDao.findAll());
+        return "user/remove-user";
+
+    }
+
+    @RequestMapping(value = "remove-user", method = RequestMethod.POST)
+    public String processRemoveuserForm(@RequestParam int[] ids) {
+
+
+        for (int id : ids) {
+
+            userDao.deleteById(id);
+        }
+
         return "redirect:";
     }
 }
