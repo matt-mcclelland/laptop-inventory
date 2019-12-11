@@ -25,14 +25,9 @@
                     <td th:text="${laptop.computerName}"></td>
                     <td th:text="${laptop.serialNumber}"></td>
                     <td th:text="${laptop.checkedOut}"></td>
-                    <td><a class="btn btn-danger" th:href="'/edit-laptop/'+${laptop.getId()}" th:text="Edit"></a></td>
+                    <td><a class="btn btn-warning" th:href="'/edit-laptop/'+${laptop.getId()}" th:text="Edit"></a></td>
                 </tr>
              </table>
-    </div>
-    <div style="margin-bottom: 1rem;">
-
-        <button type="button" class="btn btn-success"><a href="/add-laptop" style="color: white;">Add</a></button>
-        <button type="button" class="btn btn-danger"><a href="/remove-laptop" style="color: white;">Remove</a></button>
     </div>
 </div>
 </body>

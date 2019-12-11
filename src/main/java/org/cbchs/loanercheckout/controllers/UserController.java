@@ -19,8 +19,14 @@ public class UserController {
 @Autowired
 private UserDao userDao;
 
+    @RequestMapping(value = "users", method = RequestMethod.GET)
+    public String userIndex(Model model) {
+        model.addAttribute("title", "Students");
+        model.addAttribute("users", userDao.findAll());
 
-    // TODO check validation
+        return "user/users";
+    }
+
     @RequestMapping(value = "add-user", method = RequestMethod.GET)
     public String displayAddUserForm(Model model) {
         model.addAttribute("title", "Add User");
