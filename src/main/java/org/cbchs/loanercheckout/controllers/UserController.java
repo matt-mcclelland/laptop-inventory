@@ -53,10 +53,8 @@ private UserDao userDao;
 
 
         for (int id : ids) {
-
             userDao.deleteById(id);
         }
-
         return "redirect:";
     }
 }
