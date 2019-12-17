@@ -1,10 +1,10 @@
 package org.cbchs.loanercheckout.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -16,6 +16,10 @@ public class User {
     @Id
     @GeneratedValue
     private int id;
+
+    @OneToMany
+    @JoinColumn(name="user_id")
+    private List<Loan> loans = new ArrayList<>();
 
     @NotNull
     //@Size(min=6, max=6, message = "Please enter a 6 digit student number!")

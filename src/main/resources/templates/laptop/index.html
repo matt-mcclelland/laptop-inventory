@@ -24,7 +24,18 @@
                 <tr th:each="laptop : ${laptops}">
                     <td th:text="${laptop.computerName}"></td>
                     <td th:text="${laptop.serialNumber}"></td>
-                    <td th:text="${laptop.checkedOut}"></td>
+                    <div>
+                        <td th:if="${laptop.checkedOut}==true">Checked Out</td>
+                        <td th:if="${laptop.checkedOut}==false">
+                            <form method="post" action="/checkout">
+                                <input type="hidden" name="laptopId" id="laptopId" th:value="${laptop.getId()}"/>
+                                <select name="userId">
+                                    <option th:each="user : ${users}" th:text="${user.getFirstName()}+' '+${user.getLastName()}" th:value="${user.getId()}"/>
+                                </select>
+                                <input type="submit" value="Check Out"/>
+                            </form>
+                        </td>
+                    </div>
                     <td><a class="btn btn-warning" th:href="'/edit-laptop/'+${laptop.getId()}" th:text="Edit"></a></td>
                 </tr>
              </table>

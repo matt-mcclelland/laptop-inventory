@@ -1,10 +1,12 @@
 package org.cbchs.loanercheckout.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.hibernate.validator.constraints.UniqueElements;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Laptop {
@@ -13,8 +15,12 @@ public class Laptop {
     @GeneratedValue
     private int id;
 
+    @OneToMany
+    @JoinColumn(name="laptop_id")
+    private List<Loan> loans = new ArrayList<>();
+
     @NotNull
-    @Size(min=3, max=15, message = "Computer name must be between 3 and 16 characters")
+    @Size(min = 3, max = 15, message = "Computer name must be between 3 and 16 characters")
     private String computerName;
 
     @NotNull
@@ -27,6 +33,11 @@ public class Laptop {
     public boolean isCheckedOut() {
         return checkedOut;
     }
+
+    @OneToOne
+    @JoinColumn(name = "studentIDNumber")
+    private User user;
+
 
     public void setCheckedOut(boolean checkedOut) {
         this.checkedOut = checkedOut;
@@ -52,11 +63,19 @@ public class Laptop {
         return id;
     }
 
-    public Laptop() { }
+    public Laptop() {
+    }
 
     public Laptop(String computerName, String serialNumber) {
         this.computerName = computerName;
         this.serialNumber = serialNumber;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
