@@ -34,6 +34,7 @@ public class HomeController {
         model.addAttribute("laptops", laptopDao.findAll());
         model.addAttribute("title", "Loaner Laptop Checkout");
         model.addAttribute("users", userDao.findAll());
+        model.addAttribute("loans", loanDao.findAll());
 
         return "laptop/index";
     }
@@ -42,13 +43,14 @@ public class HomeController {
     public String checkout(@RequestParam(value="laptopId") int laptopId, @RequestParam(value="userId") int userId, Model model){
         Laptop laptop = laptopDao.findById(laptopId).get();
         User user = userDao.findById(userId).get();
-        Loan loan = new Loan(laptop, user, LocalDate.now(), null);
+        Loan loan = new Loan(laptop, user, null, LocalDate.now());
         laptop.setCheckedOut(true);
         laptopDao.save(laptop);
         loanDao.save(loan);
         model.addAttribute("laptops", laptopDao.findAll());
         model.addAttribute("title", "Loaner Laptop Checkout");
         model.addAttribute("users", userDao.findAll());
+        model.addAttribute("loans", loanDao.findAll());
         return "laptop/index";
     }
 

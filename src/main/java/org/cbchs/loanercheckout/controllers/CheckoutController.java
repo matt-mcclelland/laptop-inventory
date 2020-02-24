@@ -22,7 +22,7 @@ public class CheckoutController {
     public String checkout(Model model) {
 
         model.addAttribute("laptops", laptopDao.findAll());
-        model.addAttribute("title", "Checkout");
+        model.addAttribute("title", "Checkout!");
 
         return "checkout/checkout";
     }
