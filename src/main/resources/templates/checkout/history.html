@@ -26,15 +26,15 @@
                 </tr>
 
                 <tr th:each="loan : ${loans}">
-                    <td th:if="${loan.checkOut}!=null"th:text="${loan.laptop.computerName}"></td>
-                    <td th:if="${loan.checkOut}!=null" th:text="${loan.user.studentIDNumber}"></td>
-                    <td th:if="${loan.checkOut}!=null" th:text="${loan.user.lastName}+${loan.user.firstName[0]}"></td>
-                    <td th:if="${loan.checkOut}!=null" th:text="${loan.checkOut}"></td>
-                    <td th:if="${loan.checkOut}!=null">
-                        <form method="post" action="/checkin">
-                        <input type="hidden" name="loanId" id="loanId" th:value="${loan.getId()}"/>
-                        <input class="btn btn-success" type="submit" value="Check In"/>
-                        </form>
+                    <td th:text="${loan.laptop.computerName}"></td>
+                    <td th:text="${loan.user.studentIDNumber}"></td>
+                    <td th:text="${loan.user.lastName}+${loan.user.firstName[0]}"></td>
+                    <td th:text="${loan.checkOut}"></td>
+                    <td th:text="${loan.checkIn}">
+<!--                        <form method="post" action="/checkin">-->
+<!--                            <input type="hidden" name="loanId" id="loanId" th:value="${loan.getId()}"/>-->
+<!--                            <input class="btn btn-success" type="submit" value="Check In"/>-->
+<!--                        </form>-->
                     </td>
                 </tr>
             </table>

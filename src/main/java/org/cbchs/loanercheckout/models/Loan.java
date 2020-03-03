@@ -24,6 +24,7 @@ public class Loan {
     public Loan(){}
 
     @ManyToOne
+    @JoinColumn(name="laptop_id")
     private Laptop laptop;
 
     @ManyToOne

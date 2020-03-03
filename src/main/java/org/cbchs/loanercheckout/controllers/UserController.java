@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -63,4 +60,30 @@ private UserDao userDao;
         }
         return "redirect:";
     }
+
+    @RequestMapping(value="/edit-user/{id}", method = RequestMethod.GET)
+    public String processEdituserForm(Model model, @PathVariable int id) {
+
+        User user = userDao.findById(id).get();
+        model.addAttribute("title", "Edit user");
+        model.addAttribute("user", user);
+
+        return "user/edit";
+
+    }
+
+    @RequestMapping(value="/edit-user", method = RequestMethod.POST)
+    public String processEditUserForm(@ModelAttribute @Valid User newuser, @RequestParam(value="userId") int userId,
+                                        Errors errors, Model model) {
+
+  
+        User student = userDao.findById(userId).get();
+        student.setStudentIDNumber(newuser.getStudentIDNumber());
+        student.setLastName(newuser.getLastName());
+        student.setFirstName(newuser.getFirstName());
+        userDao.save(student);
+        return "redirect:";
+    }
+    
+    
 }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="head">
     <meta charset="UTF-8"/>
-    <title th:text="${title}">Loaner Laptop Checkout</title>
+    <title th:text="${title}"></title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link th:href="@{/css/styles.css}" rel="stylesheet" />
@@ -12,12 +12,18 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="page-header">
     <div class="container">
-        <a class="navbar-brand" href="/">Laptop Checkout</a>
+        <a class="navbar-brand" href="/">Checkout</a>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mr-auto">
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="/add-laptop">Add Laptop <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/checked-out">Checked Out <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/history">History <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/laptops">Laptops <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/users">Students <span class="sr-only">(current)</span></a>

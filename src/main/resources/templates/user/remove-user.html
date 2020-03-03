@@ -12,7 +12,7 @@
     <form method="post">
         <div th:each="user : ${users}" class="checkbox">
             <input type = "checkbox" name = "ids" th:value="${user.id}" th:id="${user.id}" />
-            <label th:for="${user.id}" th:text="${user.studentIDNumber}"></label>
+            <label th:for="${user.id}" th:text="${user.studentIDNumber+' - '+user.lastName+', '+user.firstName}"></label>
             <br />
         </div>
 

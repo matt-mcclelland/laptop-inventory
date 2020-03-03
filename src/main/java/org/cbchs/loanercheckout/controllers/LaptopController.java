@@ -1,7 +1,10 @@
 package org.cbchs.loanercheckout.controllers;
 
+import org.apache.commons.collections4.Get;
 import org.cbchs.loanercheckout.models.Laptop;
 import org.cbchs.loanercheckout.models.data.LaptopDao;
+import org.cbchs.loanercheckout.models.data.LoanDao;
+import org.cbchs.loanercheckout.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +20,12 @@ public class LaptopController {
 
     @Autowired
     private LaptopDao laptopDao;
+
+    @Autowired
+    private UserDao userDao;
+
+    @Autowired
+    private LoanDao loanDao;
 
     @RequestMapping(value="add-laptop", method = RequestMethod.GET)
     public String displayAddLaptopForm(Model model) {
@@ -120,8 +129,15 @@ public class LaptopController {
 
     }
 
+    @RequestMapping(value="/laptops", method = RequestMethod.GET)
+    public String processLaptopForm(Model model) {
 
+        model.addAttribute("laptops", laptopDao.findAll());
+        model.addAttribute("title", "Laptops");
+        model.addAttribute("users", userDao.findAll());
+        model.addAttribute("loans", loanDao.findAll());
 
-
+        return "laptop/laptops";
+    }
 
 }

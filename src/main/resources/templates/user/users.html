@@ -22,12 +22,15 @@
                 <th>Student ID</th>
                 <th>Last Name</th>
                 <th>First Name</th>
+                <th>Edit</th>
             </tr>
 
             <tr th:each="user : ${users}">
                 <td th:text="${user.studentIDNumber}"></td>
                 <td th:text="${user.lastName}"></td>
                 <td th:text="${user.firstName}"></td>
+                <td><button type="button" class="btn btn-warning"><a th:href="'/edit-user/'+${user.getId()}" style="color: white;">Edit</a></button></td>
+                <td></td>
             </tr>
         </table>
     </div>
