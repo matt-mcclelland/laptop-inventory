@@ -1,6 +1,8 @@
 package org.cbchs.loanercheckout.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -22,7 +24,8 @@ public class User {
     private List<Loan> loans = new ArrayList<>();
 
     @NotNull
-    //@Size(min=6, max=6, message = "Please enter a 6 digit student number!")
+    @Min(value = 190000L, message = "Please enter a valid 6 digit Student ID Number.")
+    @Max(value = 1000000L, message = "Please enter a valid 6 digit Student ID Number.")
     private Integer studentIDNumber;
 
     @NotNull
