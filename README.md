@@ -1,12 +1,20 @@
 # Laptop Inventory Management System
 
-This is application is designed to assist help desk managers and employees track physical assets within their company. It will allow logged in employees to input assets and users via CSV. Assets can be checked in and out using a barcode scanner. The home page will list all assests checked out sorted by date. Employees can edit assests and users. People who have checked out and not returned assets can be emailed from the application.
+This application is designed to assist help desk managers and employees track physical assets within their company.
 
 ## Built With
 
+[Java](https://www.java.com/en/)
+
 [Spring Boot](https://start.spring.io/)
 
+[MySQL](https://www.mysql.com/)
+
 [Gradle](https://gradle.org/)
+
+[Thymeleaf](https://www.thymeleaf.org/)
+
+[Bootstrap 4](https://getbootstrap.com/)
 
 
 ## Authors
