@@ -18,18 +18,35 @@
                 <tr>
                     <th>Computer Name</th>
                     <th>Serial Number</th>
+                    <th>Check Out</th>
                 </tr>
 
                 <tr th:each="laptop : ${laptops}">
-                    <td th:text="${laptop.computerName}"></td>
-                    <td th:text="${laptop.serialNumber}"></td>
+                    <td th:if="${laptop.checkedOut}==false"  th:text="${laptop.computerName}"></td>
+                    <td th:if="${laptop.checkedOut}==false"  th:text="${laptop.serialNumber}"></td>
+                    <div>
+                        <td th:if="${laptop.checkedOut}==false">
+                            <form method="post" action="/checkout">
+                                <input type="hidden" name="laptopId" id="laptopId" th:value="${laptop.getId()}"/>
+                                <select  name="userId">
+                                    <option th:each="user : ${users}" th:text="${user.getStudentIDNumber()}+' '+${user.getLastName()}+', '+${user.getFirstName()}" th:value="${user.getId()}"/>
+                                </select>
+                                <input class="btn btn-success" type="submit" style="margin-left:15px;"value="Check Out"/>
+                            </form>
+                        </td>
+                    </div>
+<!--                    <div>-->
+<!--                        <td th:if="${laptop.checkedOut}==true">-->
+<!--                            <form method="post" action="/checkin">-->
+<!--                                <input class="btn btn-success" type="submit" value="${laptop.loan.getId()}"/>-->
+<!--                            </form>-->
+<!--                        </td>-->
+
+<!--                    </div>-->
+
+<!--                    <td><a class="btn btn-warning" th:href="'/edit-laptop/'+${laptop.getId()}" th:text="Edit"></a></td>-->
                 </tr>
              </table>
-    </div>
-    <div style="margin-bottom: 1rem;">
-
-        <button type="button" class="btn btn-success"><a href="/add-laptop" style="color: white;">Add</a></button>
-        <button type="button" class="btn btn-danger"><a href="/remove-laptop" style="color: white;">Remove</a></button>
     </div>
 </div>
 </body>

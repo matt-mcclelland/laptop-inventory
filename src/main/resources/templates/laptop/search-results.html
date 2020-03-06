@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="container body-content">
+
+    <h1 th:text="${title}">Default Title</h1>
+
+
+    <p style="color: red;" th:unless="${laptops} and ${laptops.size()}">No laptops found.</p>
+
+    <div>
+        <table class="table">
+            <tr>
+                <th>Computer Name</th>
+                <th>Serial Number</th>
+                <th>Checked Out</th>
+            </tr>
+
+            <tr th:each="laptop : ${laptops}">
+                <td th:text="${laptop.computerName}"></td>
+                <td th:text="${laptop.serialNumber}"></td>
+                <td th:text="${laptop.checkedOut}"></td>
+                <td><a class="btn btn-danger" th:href="'/edit-laptop/'+${laptop.getId()}" th:text="Edit"></a></td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-bottom: 1rem;">
+
+        <button type="button" class="btn btn-success"><a href="/add-laptop" style="color: white;">Add</a></button>
+        <button type="button" class="btn btn-danger"><a href="/remove-laptop" style="color: white;">Remove</a></button>
+    </div>
+</div>
+</body>
+</html>

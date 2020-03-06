@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="container body-content">
+
+
+    <div class="container body-content">
+
+        <h1 th:text="${title}">Default Title</h1>
+
+
+        <p style="color: red;" th:unless="${loans} and ${loans.size()}">No loaned equipment found.</p>
+
+        <div>
+            <table class="table">
+                <tr>
+                    <th>Computer Name</th>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Checked Out</th>
+                    <th>Check In</th>
+                </tr>
+
+                <tr th:each="loan : ${loans}">
+                    <td th:if="${loan.checkOut}!=null"th:text="${loan.laptop.computerName}"></td>
+                    <td th:if="${loan.checkOut}!=null" th:text="${loan.user.studentIDNumber}"></td>
+                    <td th:if="${loan.checkOut}!=null" th:text="${loan.user.lastName}+${loan.user.firstName[0]}"></td>
+                    <td th:if="${loan.checkOut}!=null" th:text="${loan.checkOut}"></td>
+                    <td th:if="${loan.checkOut}!=null">
+                        <form method="post" action="/checkin">
+                        <input type="hidden" name="loanId" id="loanId" th:value="${loan.getId()}"/>
+                        <input class="btn btn-success" type="submit" value="Check In"/>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+</body>
+</html>

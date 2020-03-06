@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="container body-content">
+
+    <h1 th:text="${title}">Default Title</h1>
+
+    <div class="mb-3"><button type="button" class="btn btn-success"><a href="/add-laptop" style="color: white;">Add</a></button>
+        <button type="button" class="btn btn-danger"><a href="/remove-laptop" style="color: white;">Remove</a></button></div>
+
+
+    <div><p style="color: red;" th:unless="${laptops} and ${laptops.size()}">No laptops found. Please add a laptop!</p></div>
+
+    <div>
+        <table class="table">
+            <tr>
+                <th>Computer Name</th>
+                <th>Serial Number</th>
+                <th>Edit</th>
+
+            </tr>
+
+            <tr th:each="laptop : ${laptops}">
+                <td th:text="${laptop.computerName}"></td>
+                <td th:text="${laptop.serialNumber}"></td>
+                <td><button type="button" class="btn btn-warning"><a th:href="'/edit-laptop/'+${laptop.getId()}" style="color: white;">Edit</a></button></td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-bottom: 1rem;">
+
+        <button type="button" class="btn btn-success"><a href="/add-laptop" style="color: white;">Add</a></button>
+        <button type="button" class="btn btn-danger"><a href="/remove-laptop" style="color: white;">Remove</a></button>
+    </div>
+</div>
+</body>
+</html>

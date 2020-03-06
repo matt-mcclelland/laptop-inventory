@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="container body-content">
+
+    <h1 th:text="${title}">Default Title</h1>
+
+    <div class="mb-3"><button type="button" class="btn btn-success"><a href="/add-user" style="color: white;">Add</a></button>
+        <button type="button" class="btn btn-danger"><a href="/remove-user" style="color: white;">Remove</a></button></div>
+
+
+    <div><p style="color: red;" th:unless="${users} and ${users.size()}">No users found. Please add a user!</p></div>
+
+    <div>
+        <table class="table">
+            <tr>
+                <th>Student ID</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Edit</th>
+            </tr>
+
+            <tr th:each="user : ${users}">
+                <td th:text="${user.studentIDNumber}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td><button type="button" class="btn btn-warning"><a th:href="'/edit-user/'+${user.getId()}" style="color: white;">Edit</a></button></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-bottom: 1rem;">
+
+        <button type="button" class="btn btn-success"><a href="/add-user" style="color: white;">Add</a></button>
+        <button type="button" class="btn btn-danger"><a href="/remove-user" style="color: white;">Remove</a></button>
+    </div>
+</div>
+</body>
+</html>
