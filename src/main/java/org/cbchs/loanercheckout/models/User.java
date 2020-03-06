@@ -26,6 +26,7 @@ public class User {
     private Integer studentIDNumber;
 
     @NotNull
+    @Size(min=3, max=24, message = "Please enter a name with between 3 and 24 characters!")
     private String lastName;
 
     @NotNull
