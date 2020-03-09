@@ -14,7 +14,7 @@
     <p style="color: red;" th:unless="${laptops} and ${laptops.size()}">No laptops found.  <a href="/add-laptop"><button class="btn btn-success" style="margin-left: 7px;">Add Laptop</button></a></p>
     <p style="color: red;" th:unless="${users} and ${users.size()}">No students found.  <a href="/add-user"><button class="btn btn-success">Add Student</button></a></p>
 
-    <div>
+    <div style="margin-bottom: 2em;">
             <table class="table">
                 <tr>
                     <th>Computer Name</th>
@@ -22,7 +22,7 @@
                     <th>Check Out</th>
                 </tr>
 
-                <tr th:each="laptop : ${laptops}" th:if="${laptop.checkedOut}==false and ${users.size()}">
+                <tr th:each="laptop : ${laptops}" th:if="${laptop.checkedOut} == false and ${users.size()}">
                     <td th:text="${laptop.computerName}"></td>
                     <td th:text="${laptop.serialNumber}"></td>
                     <div>
@@ -38,6 +38,27 @@
                     </div>
                 </tr>
              </table>
+    </div>
+    <div>
+        <h2>Currently Checked Out</h2>
+    </div>
+    <div>
+        <table class="table">
+            <tr>
+                <th>Computer Name</th>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Checked Out</th>
+            </tr>
+
+            <tr th:each="loan : ${loans}" th:if="${loan.checkIn} == null">
+                <td th:text="${loan.laptop.computerName}"></td>
+                <td th:text="${loan.user.studentIDNumber}"></td>
+                <td th:text="${loan.user.lastName}+${loan.user.firstName[0]}"></td>
+                <td th:text="${loan.checkOut}"></td>
+            </tr>
+        </table>
+        <p th:unless="${loans.size()}" style="color:red;">No computers are currently checked out.</p>
     </div>
 </div>
 </body>

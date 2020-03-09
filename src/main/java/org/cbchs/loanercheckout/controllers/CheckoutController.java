@@ -27,11 +27,11 @@ public class CheckoutController {
     @Autowired
     private LoanDao loanDao;
 
-    @RequestMapping(value = "checked-out", method = RequestMethod.GET)
+    @RequestMapping(value = "checked-in", method = RequestMethod.GET)
     public String checkout(Model model) {
 
         model.addAttribute("laptops", laptopDao.findAll());
-        model.addAttribute("title", "Checked Out Computers");
+        model.addAttribute("title", "Check In");
         model.addAttribute("users", userDao.findAll());
         model.addAttribute("loans", loanDao.findAll());
 
